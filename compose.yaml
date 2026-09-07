@@ -1,0 +1,50 @@
+services:
+  # 開発監視コンテナ (watch モード)
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: obsidian-antigravity-dev
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: ["npm", "run", "dev"]
+    environment:
+      - NODE_ENV=development
+
+  # プロダクションビルド実行コンテナ
+  build:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: obsidian-antigravity-build
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: ["npm", "run", "build"]
+    environment:
+      - NODE_ENV=production
+
+  # 型チェック・テストコンテナ
+  check:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: obsidian-antigravity-check
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: ["npm", "run", "check"]
+
+  # Vaultプラグインフォルダへのデプロイコンテナ
+  deploy:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: obsidian-antigravity-deploy
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - ${OBSIDIAN_VAULT_PATH:-../obsidian-vault}/.obsidian/plugins/obsidian-antigravity:/vault-plugin
+    command: ["sh", "-c", "npm run build && cp -v main.js manifest.json styles.css /vault-plugin/"]
+

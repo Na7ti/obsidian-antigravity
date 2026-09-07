@@ -1,0 +1,11 @@
+{
+  "id": "obsidian-antigravity",
+  "name": "Antigravity Assistant",
+  "version": "0.1.0",
+  "minAppVersion": "0.15.0",
+  "description": "Seamlessly integrates the Antigravity AI assistant into Obsidian's sidebar with auto note context extraction and one-click editor insertion.",
+  "author": "Na7ti",
+  "authorUrl": "https://github.com/Na7ti",
+  "isDesktopOnly": true
+}
+

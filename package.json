@@ -1,0 +1,30 @@
+{
+  "name": "obsidian-antigravity-plugin",
+  "version": "0.1.0",
+  "description": "Seamlessly integrates the Antigravity AI assistant into Obsidian's sidebar with auto note context extraction and one-click editor insertion.",
+  "main": "main.js",
+  "scripts": {
+    "dev": "node esbuild.config.mjs",
+    "build": "BUILD_ENV=production node esbuild.config.mjs",
+    "check": "tsc --noEmit",
+    "deploy:vault": "npm run build && node scripts/deploy.mjs"
+  },
+  "keywords": [
+    "obsidian",
+    "obsidian-plugin",
+    "antigravity",
+    "ai-assistant",
+    "sidebar"
+  ],
+  "author": "Na7ti",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "builtin-modules": "^3.3.0",
+    "esbuild": "^0.21.5",
+    "obsidian": "latest",
+    "tslib": "^2.6.3",
+    "typescript": "^5.4.5"
+  }
+}
+
